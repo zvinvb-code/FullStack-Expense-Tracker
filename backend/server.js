@@ -22,6 +22,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
 import insightRoutes from "./routes/insightRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import streakRoutes from "./routes/streakRoutes.js";
@@ -33,11 +36,13 @@ connectDB();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/expenses", expenseRoutes);
+app.use("/api/analytics", analyticsRoutes);
 app.use("/api/insights", insightRoutes);
-app.use(
-  "/api/subscriptions",
-  subscriptionRoutes
-);
+app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/streaks", streakRoutes);
 
 app.get("/", (req, res) => {

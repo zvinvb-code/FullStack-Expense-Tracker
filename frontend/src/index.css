@@ -1,0 +1,383 @@
+/* ==========================================
+   ExpenseFlow AI — Premium Design System
+   ========================================== */
+
+:root {
+  /* Fonts */
+  --font-primary: 'IBM Plex Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Typography Scale */
+  --fs-large-heading: 34px;
+  --fs-page-heading: 28px;
+  --fs-section-title: 20px;
+  --fs-body: 15px;
+  --fs-caption: 13px;
+  --fs-button: 14px;
+
+  /* Border Radii */
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --radius-input: 12px;
+  --radius-chip: 10px;
+
+  /* Shadows & Borders */
+  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.04);
+  --border-width: 1px;
+  
+  /* Color System - Light Theme (Sand/Warm Grey) */
+  --bg-primary: #F6F5F2;
+  --bg-surface: #FFFFFF;
+  --bg-sidebar: #F1EFEA;
+  --border-color: #E5E2DA;
+  --text-primary: #1B1B1B;
+  --text-secondary: #6D6D6D;
+  --text-muted: #9A9A9A;
+
+  /* Primary Accent */
+  --accent: #2F6F62;
+  --accent-hover: #215147;
+  --accent-light: rgba(47, 111, 98, 0.1);
+
+  /* Status Colors */
+  --success: #3F8F6B;
+  --warning: #D8A13D;
+  --error: #C95A4A;
+  --info: #4B6B8A;
+}
+
+/* Color System - Dark Theme */
+.dark-theme,
+body.dark-theme {
+  --bg-primary: #121210;
+  --bg-surface: #1C1C18;
+  --bg-sidebar: #181815;
+  --border-color: #2D2C26;
+  --text-primary: #F5F4F0;
+  --text-secondary: #A6A49E;
+  --text-muted: #7E7C76;
+
+  /* Primary Accent (Slightly boosted contrast for dark theme) */
+  --accent: #3D8B7B;
+  --accent-hover: #4CA694;
+  --accent-light: rgba(61, 139, 123, 0.15);
+
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================
+   Global Reset & Base Rules
+   ========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ==========================================
+   Typography Overrides
+   ========================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================
+   Interactive Components (Inputs, Buttons)
+   ========================================== */
+
+/* Button Classes */
+button, .btn {
+  font-family: var(--font-secondary);
+  font-size: var(--fs-button);
+  font-weight: 500;
+  border-radius: var(--radius-button);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+button:disabled, .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-primary);
+  border-color: var(--text-muted);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Form inputs & controls */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  font-family: var(--font-secondary);
+  font-size: var(--fs-body);
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-input);
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+label {
+  font-family: var(--font-secondary);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ==========================================
+   Layout Containers & Cards
+   ========================================= */
+
+.premium-card {
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Numbers Formatting */
+.number-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Tables styling */
+.premium-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-card);
+  border: var(--border-width) solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+table.premium-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table.premium-table th {
+  background-color: var(--bg-sidebar);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: var(--fs-caption);
+  padding: 16px 20px;
+  border-bottom: var(--border-width) solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table.premium-table td {
+  padding: 16px 20px;
+  border-bottom: var(--border-width) solid var(--border-color);
+  color: var(--text-primary);
+  font-size: var(--fs-body);
+}
+
+table.premium-table tr:last-child td {
+  border-bottom: none;
+}
+
+table.premium-table tbody tr:hover {
+  background-color: var(--bg-primary);
+}
+
+/* Status Chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-chip);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+}
+
+.status-chip.success {
+  background-color: rgba(63, 143, 107, 0.1);
+  color: var(--success);
+}
+
+.status-chip.warning {
+  background-color: rgba(216, 161, 61, 0.1);
+  color: var(--warning);
+}
+
+.status-chip.error {
+  background-color: rgba(201, 90, 74, 0.1);
+  color: var(--error);
+}
+
+.status-chip.info {
+  background-color: rgba(75, 107, 138, 0.1);
+  color: var(--info);
+}
+
+/* ==========================================
+   Authentication Specific Styles
+   ========================================== */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 40px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.auth-card h1 {
+  font-size: var(--fs-large-heading);
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.auth-card h2 {
+  font-size: var(--fs-section-title);
+  font-weight: 500;
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: -12px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-card p {
+  font-size: var(--fs-caption);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.error-message {
+  background-color: rgba(201, 90, 74, 0.1);
+  color: var(--error);
+  padding: 12px;
+  border-radius: var(--radius-input);
+  border: var(--border-width) solid rgba(201, 90, 74, 0.2);
+  font-size: var(--fs-caption);
+  text-align: center;
+}

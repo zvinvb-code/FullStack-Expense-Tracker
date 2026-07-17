@@ -1,0 +1,142 @@
+.sidebar {
+  width: 72px;
+  height: 100vh;
+  background-color: var(--bg-sidebar);
+  border-right: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 14px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  transition: width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 240px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  margin-bottom: 32px;
+  height: 40px;
+}
+
+.brand-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  font-family: var(--font-primary);
+  font-size: var(--fs-section-title);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar:hover .brand-text {
+  opacity: 1;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: var(--radius-button);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  height: 42px;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--text-primary);
+}
+
+.dark-theme .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.menu-item.active {
+  background-color: var(--bg-surface);
+  color: var(--accent);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+}
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  margin-right: 16px;
+}
+
+.menu-text {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar:hover .menu-text {
+  opacity: 1;
+}
+
+.logout-btn {
+  background: transparent;
+  border: var(--border-width) solid transparent;
+  color: var(--error);
+  padding: 10px 12px;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 42px;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: rgba(201, 90, 74, 0.08);
+}
+
+.logout-btn .menu-icon {
+  margin-right: 16px;
+  color: var(--error);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    padding: 0;
+    border-right: none;
+  }
+  
+  .sidebar:hover {
+    width: 0;
+    box-shadow: none;
+  }
+}

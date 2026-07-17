@@ -1,0 +1,47 @@
+.expense-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.expense-form-card {
+  width: 100%;
+}
+
+.expense-form-card h1 {
+  font-size: var(--fs-page-heading);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (max-width: 768px) {
+  .expense-form-container {
+    padding: 16px 0;
+  }
+  
+  .button-group {
+    flex-direction: column-reverse;
+  }
+  
+  .button-group button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,90 @@
+.subscriptions-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subscriptions-header h1 {
+  font-size: var(--fs-page-heading);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.subscription-summary-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+}
+
+.subscription-summary-card h2 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.summary-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.subscriptions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.subscription-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-amount {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.sub-meta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding-top: 12px;
+  border-top: var(--border-width) solid var(--border-color);
+  margin-top: 12px;
+}
+
+.sub-meta-item span {
+  color: var(--text-secondary);
+}
+
+.sub-meta-item strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.upcoming-card {
+  border-left: 3px solid var(--warning) !important;
+}
+
+@media (max-width: 992px) {
+  .subscriptions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .subscriptions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .subscription-summary-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

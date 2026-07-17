@@ -169,3 +169,31 @@ export const deleteExpense = async (req, res) => {
     });
   }
 };
+
+// =====================
+// Get Single Expense
+// =====================
+export const getExpenseById = async (req, res) => {
+  try {
+    const expense = await Expense.findById(req.params.id);
+
+    if (!expense) {
+      return res.status(404).json({
+        message: "Expense not found",
+      });
+    }
+
+    // Ensure owner can view
+    if (expense.userId.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
+    }
+
+    res.status(200).json(expense);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};

@@ -1,23 +1,22 @@
-router.post(
- "/",
- protect,
- addExpense
-);
+import express from "express";
+import {
+  addExpense,
+  getExpenses,
+  getExpenseById,
+  updateExpense,
+  deleteExpense,
+} from "../controllers/expenseController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-router.get(
- "/",
- protect,
- getExpenses
-);
+const router = express.Router();
 
-router.put(
- "/:id",
- protect,
- updateExpense
-);
+// Apply auth middleware to all expense routes
+router.use(protect);
 
-router.delete(
- "/:id",
- protect,
- deleteExpense
-);
+router.post("/", addExpense);
+router.get("/", getExpenses);
+router.get("/:id", getExpenseById);
+router.put("/:id", updateExpense);
+router.delete("/:id", deleteExpense);
+
+export default router;
