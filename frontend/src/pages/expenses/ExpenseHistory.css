@@ -38,7 +38,7 @@
   pointer-events: none;
 }
 
-.search-box input {
+.search-box input[type="text"] {
   padding-left: 42px;
 }
 

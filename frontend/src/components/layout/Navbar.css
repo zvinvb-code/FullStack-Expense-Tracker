@@ -30,7 +30,7 @@
   align-items: center;
 }
 
-.navbar-search input {
+.navbar-search input[type="text"] {
   padding: 10px 14px 10px 42px;
   font-size: var(--fs-button);
   background-color: var(--bg-primary);
@@ -38,7 +38,7 @@
   border: var(--border-width) solid transparent;
 }
 
-.navbar-search input:focus {
+.navbar-search input[type="text"]:focus {
   background-color: var(--bg-surface);
   border-color: var(--accent);
 }
